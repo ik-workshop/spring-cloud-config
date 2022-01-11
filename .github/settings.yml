@@ -3,10 +3,10 @@ _extends: .github
 
 repository:
   # See https://developer.github.com/v3/repos/#edit for all available settings.
-  name: workshop-blueprint
-  description: ':factory: Workshop blueprint'
+  name: spring-cloud-config
+  description: ':factory: Workshop Spring Cloud Config'
   homepage: https://ivankatliarchuk.github.io
-  topics: ivka, workshop, blueprint
+  topics: ivka, workshop, blueprint, spring-cloud-config, spring
   private: false
   has_issues: true
   has_projects: false
