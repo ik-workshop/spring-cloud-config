@@ -13,3 +13,6 @@ hooks: ## install pre commit.
 
 validate: ## Validate files with pre-commit hooks
 	@pre-commit run --all-files
+
+build: ## Build docker image
+	@docker build -t test .
