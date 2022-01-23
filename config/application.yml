@@ -1,3 +1,7 @@
+info:
+  component: config-server
+
+---
 management:
   endpoint:
     prometheus:
@@ -12,9 +16,16 @@ management:
       exposure:
         include: "*"
 
+---
 spring:
   cloud:
     config:
       server:
+        health:
+          myservice:
+            label: main
         git:
-          uri: https://github.com/spring-cloud-samples/config-repo
+          uri: https://github.com/ik-workshop/config-samples
+          clone-on-start: true
+          default-label: main
+          search-paths: '{application}'
