@@ -1,0 +1,79 @@
+version: '3.8'
+
+# Docker Compose example for testing Spring Cloud Bus Kafka
+
+services:
+  # Configured through environment variables
+  config-server-env:
+    depends_on:
+      - kafka
+    container_name: config-server-env
+    image: "${REGISTRY:-docker.io}/${IMAGE_NAME:-hyness/spring-cloud-config-server}:${TAG:-latest}"
+    ports:
+      - "8881:8888"
+    environment:
+      MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE: "*"
+      SPRING_PROFILES_ACTIVE: cloud-bus-kafka
+      SPRING_CLOUD_CONFIG_SERVER_GIT_URI: https://github.com/spring-cloud-samples/config-repo
+      SPRING_KAFKA_BOOTSTRAP-SERVERS: kafka:9092
+
+  # Configured through mounted config volume
+  config-server-dir:
+    depends_on:
+      - kafka
+    container_name: config-server-dir
+    image: "${REGISTRY:-docker.io}/${IMAGE_NAME:-hyness/spring-cloud-config-server}:${TAG:-latest}"
+    ports:
+      - "8882:8888"
+    volumes:
+      - ./config:/config
+
+  # Configured through system properties
+  config-server-props:
+    depends_on:
+      - kafka
+    container_name: config-server-props
+    image: "${REGISTRY:-docker.io}/${IMAGE_NAME:-hyness/spring-cloud-config-server}:${TAG:-latest}"
+    ports:
+      - "8883:8888"
+    environment:
+      JAVA_OPTS: >
+        -Dmanagement.endpoints.web.exposure.include=*
+        -Dspring.profiles.active=cloud-bus-kafka
+        -Dspring.cloud.config.server.git.uri=https://github.com/spring-cloud-samples/config-repo
+        -Dspring.kafka.bootstrap-servers=kafka:9092
+
+  # Configured through command line arguments
+  config-server-args:
+    depends_on:
+      - kafka
+    container_name: config-server-args
+    image: "${REGISTRY:-docker.io}/${IMAGE_NAME:-hyness/spring-cloud-config-server}:${TAG:-latest}"
+    command:
+      - --management.endpoints.web.exposure.include=*
+      - --spring.profiles.active=cloud-bus-kafka
+      - --spring.cloud.config.server.git.uri=https://github.com/spring-cloud-samples/config-repo
+      - --spring.kafka.bootstrap-servers=kafka:9092
+    ports:
+      - "8884:8888"
+
+  zookeeper:
+    image: wurstmeister/zookeeper
+    container_name: zookeeper
+    ports:
+      - "2181:2181"
+
+  kafka:
+    depends_on:
+      - zookeeper
+    container_name: kafka
+    image: wurstmeister/kafka
+    ports:
+      - "9092:9092"
+    environment:
+      KAFKA_CREATE_TOPICS: "springCloudBus:1:1"
+      KAFKA_ADVERTISED_HOST_NAME: kafka
+      KAFKA_ADVERTISED_PORT: 9092
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock

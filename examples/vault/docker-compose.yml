@@ -1,0 +1,71 @@
+version: '2'
+
+# Docker Compose example for testing Vault
+
+services:
+  # Configured through environment variables
+  config-server-env:
+    depends_on:
+      - vault
+    container_name: config-server-env
+    image: "${REGISTRY:-docker.io}/${IMAGE_NAME:-hyness/spring-cloud-config-server}:${TAG:-latest}"
+    ports:
+      - "8881:8888"
+    environment:
+      SPRING_PROFILES_ACTIVE: vault
+      SPRING_CLOUD_CONFIG_SERVER_VAULT_TOKEN: 00000000-0000-0000-0000-000000000000
+      SPRING_CLOUD_CONFIG_SERVER_VAULT_HOST: vault
+      SPRING_CLOUD_CONFIG_SERVER_VAULT_KV_VERSION: 2
+
+  # Configured through mounted config volume
+  config-server-dir:
+    depends_on:
+      - vault
+    container_name: config-server-dir
+    image: "${REGISTRY:-docker.io}/${IMAGE_NAME:-hyness/spring-cloud-config-server}:${TAG:-latest}"
+    ports:
+      - "8882:8888"
+    volumes:
+      - ./config:/config
+
+  # Configured through system properties
+  config-server-props:
+    depends_on:
+      - vault
+    container_name: config-server-props
+    image: "${REGISTRY:-docker.io}/${IMAGE_NAME:-hyness/spring-cloud-config-server}:${TAG:-latest}"
+    ports:
+      - "8883:8888"
+    environment:
+      JAVA_OPTS: >
+        -Dspring.profiles.active=vault
+        -Dspring.cloud.config.server.vault.token=00000000-0000-0000-0000-000000000000
+        -Dspring.cloud.config.server.vault.host=vault
+        -Dspring.cloud.config.server.vault.kv-version=2
+
+  # Configured through command line arguments
+  config-server-args:
+    depends_on:
+      - vault
+    container_name: config-server-args
+    image: "${REGISTRY:-docker.io}/${IMAGE_NAME:-hyness/spring-cloud-config-server}:${TAG:-latest}"
+    ports:
+      - "8884:8888"
+    command:
+      - --spring.profiles.active=vault
+      - --spring.cloud.config.server.vault.token=00000000-0000-0000-0000-000000000000
+      - --spring.cloud.config.server.vault.host=vault
+      - --spring.cloud.config.server.vault.kv-version=2
+
+  vault:
+    privileged: true
+    container_name: vault
+    image: vault
+    ports:
+      - "8200:8200"
+    environment:
+      - VAULT_DEV_ROOT_TOKEN_ID=00000000-0000-0000-0000-000000000000
+      - VAULT_TOKEN=00000000-0000-0000-0000-000000000000
+      - VAULT_ADDR=http://127.0.0.1:8200
+    volumes:
+      - ./populate-vault.sh:/populate-vault.sh

@@ -1,0 +1,94 @@
+info:
+  component: config-server
+
+server:
+  # Make Tomcat listen on any interface (IPv4 and IPv6) on port 9400
+  address: 0.0.0.0
+  port: 8080
+---
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    features:
+      cache:
+        time-to-live: 100
+    health:
+      show-details: always
+
+---
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        health:
+          myservice:
+            label: master
+          myservice-dev:
+            name: myservice
+            profiles: deve
+
+        git:
+          uri: https://github.com/spring-cloud-samples/config-repo
+          basedir: target/config
+#          default-label: main
+          clone-on-start: true
+          #          searchPaths: path/within/repo/to/configurations
+          repos:
+            team-a:
+              pattern: team-a-*
+              cloneOnStart: true
+              uri: https://github.com/briansjavablog/spring-config-server-on-kubernettes
+              basedir: configuration
+              # searchPaths: "team"
+            app-1:
+              pattern: app1
+              cloneOnStart: true
+              uri: https://github.com/springdeveloper123/spring-cloud-config-server-db
+#              basedir: app1
+              default-label: master
+#              is the path of the properties in the repo
+              search-paths:
+                - app1*
+#            app-2:
+##              pattern: app2
+#              cloneOnStart: true
+#              uri: https://github.com/springdeveloper123/spring-cloud-config-server-db
+#              default-label: master
+#              basedir: app2
+#              search-paths:
+#                - app2*
+#            jndi:
+#              pattern:
+#                - "*/jndi"
+#              uri: https://github.com/springdeveloper123/spring-cloud-config-server-db-jndi
+#              default-label: master
+#              search-paths:
+#                - app*
+#foo: baz
+# https://www.youtube.com/watch?v=JSdy9Q8Uk34
+# https://cloud.spring.io/spring-cloud-config/multi/multi__spring_cloud_config_server.html#_force_pull_in_git_repositories
+# https://github.com/spring-cloud/spring-cloud-config
+# https://github.com/Haufe-Lexware/demo-authorized-spring-config-server/blob/master/config-server/src/main/resources/application.yml
+#  https://www.briansdevblog.com/2021/04/spring-cloud-config-server-on-kubernetes-part-1/
+# https://github.com/springdeveloper123
+
+# how to search
+#  https://www.docs4dev.com/docs/en/spring-cloud/Edgware.SR5/reference/multi__spring_cloud_config_server.html
+
+# k8s https://www.briansdevblog.com/2021/04/spring-cloud-config-server-on-kubernetes-part-1/
+# https://github.com/briansjavablog/spring-config-server-on-kubernettes
+# demo
+# https://github.com/springdeveloper123/spring-cloud-config-demo
+
+# blog https://medium.com/javarevisited/lets-learn-together-sessions-spring-cloud-config-server-17ecd171d86
+# quering configuraiton $> git init
+# $> echo 'user.role=Developer' > config-client-development.properties
+# $> echo 'user.role=User'      > config-client-production.properties
+# $> git add .
+# $> git commit -m 'Initial config-client properties'
+# looks like it https://www.thomasvitale.com/spring-cloud-config-basics/
