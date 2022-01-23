@@ -19,10 +19,12 @@ import org.springframework.cloud.config.server.EnableConfigServer
 import org.springframework.context.annotation.Configuration
 import org.springframework.context.annotation.Import
 import org.springframework.context.annotation.Profile
+import springfox.documentation.swagger2.annotations.EnableSwagger2
 import org.springframework.cloud.stream.binder.kafka.config.ExtendedBindingHandlerMappingsProviderConfiguration as KafkaBinderAutoConfiguration
 import org.springframework.cloud.stream.binder.rabbit.config.ExtendedBindingHandlerMappingsProviderConfiguration as RabbitBinderAutoConfiguration
 
 @EnableConfigServer
+@EnableSwagger2
 @SpringBootApplication(exclude = [
     DataSourceAutoConfiguration::class,
     RedisAutoConfiguration::class,

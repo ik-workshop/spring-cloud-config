@@ -82,6 +82,20 @@ $> git add .
 $> git commit -m 'Initial config-client properties'
 ```
 
+### Example Requests
+
+Assume the [GIT REPO](https://github.com/ik-workshop/config-samples) is used
+
+```
+curl --location --request GET 'http://localhost:8882/team-a-dev.json'
+curl --location --request GET 'http://localhost:8882/team-a-dev.yml'
+curl --location --request GET 'http://localhost:8882/team-a-dev.properties'
+
+curl --location --request GET 'http://localhost:8882/team-a/mem-service'
+curl --location --request GET 'http://localhost:8882/greeting-service-staging.json'
+curl --location --request GET 'http://localhost:8882/team-a-userservice.json'
+```
+
 ## Run Service
 
 #### Parameters
@@ -93,6 +107,7 @@ $> git commit -m 'Initial config-client properties'
 * `JAVA_OPTS` Specify VM Options or System Properties
 
 ###  Configuring Spring Cloud Config Server
+
 Spring Cloud Config Server is a normal Spring Boot application, it can be configured through all the ways a
 Spring Boot application can be configured.  You may use environment variables or you can mount configuration in
 the provided volume.  The configuration file must be named **application** and may be a properties or yaml file.
@@ -130,6 +145,7 @@ applications configured with **RefreshScope** to automatically reload configurat
 - [ ] Serve Private Resository
 - [ ] Helm charts
 - [ ] Example queries
+- [ ] Tests
 
 <!-- resources -->
 [template.generate]: https://github.com/ik-workshop/spring-cloud-config/generate

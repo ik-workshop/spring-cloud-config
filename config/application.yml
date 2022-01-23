@@ -24,8 +24,31 @@ spring:
         health:
           myservice:
             label: main
+        monitor:
+          github:
+            enabled: true
+          gitee:
+            enabled: true
         git:
           uri: https://github.com/ik-workshop/config-samples
           clone-on-start: true
           default-label: main
-          search-paths: '{application}'
+          search-paths:
+          - '{application}'
+          - '{application}/*service'
+          - '{application}/{profile}'
+          # password: ${PASSWORD}
+          # username: ${USERNAME}
+          # repos:
+          #   team-a:
+          #     pattern: team-a
+          #     uri: https://github.com/ik-workshop/config-samples
+          #     clone-on-start: true
+          #     default-label: main
+          #     search-paths: 'team-a/{application}'
+          #   team-b:
+          #     uri: https://github.com/ik-workshop/config-samples
+          #     clone-on-start: true
+          #     default-label: main
+          #     search-paths: 'team-b/*service'
+

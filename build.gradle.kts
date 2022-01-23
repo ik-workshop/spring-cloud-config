@@ -62,6 +62,8 @@ dependencies {
     runtimeOnly("com.microsoft.sqlserver:mssql-jdbc")
     runtimeOnly("org.firebirdsql.jdbc:jaybird-jdk18")
     runtimeOnly("io.micrometer:micrometer-registry-prometheus")
+    // swagger
+    implementation("io.springfox:springfox-boot-starter:3.0.0")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
 

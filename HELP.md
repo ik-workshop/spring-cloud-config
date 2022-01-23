@@ -25,3 +25,12 @@ These additional references should also help you:
 - [Example: 1](https://github.com/kousikpaul4u/Spring-cloud-config-server)
 - [Example: 2](https://www.tutorialspoint.com/spring_boot/spring_boot_cloud_configuration_server.htm)
 - [Example: Medium blog](https://medium.com/@kousikpaul/spring-cloud-config-server-client-gradle-ssh-authentication-ac8f90d28ff5)
+- [Samples](https://github.com/spring-cloud-samples/config-repo)
+- [Blog: k8s how to](https://www.briansdevblog.com/2021/04/spring-cloud-config-server-on-kubernetes-part-2/)
+
+https://www.baeldung.com/spring-cloud-configuration
+https://medium.com/javarevisited/lets-learn-together-sessions-spring-cloud-config-server-17ecd171d86
+
+
+https://github.com/hyness/spring-cloud-config-server
+https://spring.io/guides/gs/centralized-configuration/
