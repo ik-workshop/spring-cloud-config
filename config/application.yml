@@ -51,4 +51,3 @@ spring:
           #     clone-on-start: true
           #     default-label: main
           #     search-paths: 'team-b/*service'
-

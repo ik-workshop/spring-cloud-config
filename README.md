@@ -27,6 +27,7 @@ A workshop uses [Spring Cloud Config Server](https://docs.spring.io/spring-cloud
 
 - [Strategies for storing configuration properties](#strategies-for-storing-configuration-properties)
   - [A Git Repository as Configuration Storage](#a-git-repository-as-configuration-storage)
+  - [Example Requests](#example-requests)
 - [Run Service](#run-service)
     - [Parameters](#parameters)
     - [Environment Variables](#environment-variables)
