@@ -1,0 +1,12 @@
+version: '3'
+
+# Docker Compose example for testing a remote git repo
+
+services:
+  # Configured through mounted config volume
+  config-server:
+    image: spring-config-svc
+    ports:
+      - "8882:8888"
+    volumes:
+      - ./config:/config

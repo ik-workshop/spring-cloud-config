@@ -14,5 +14,12 @@ hooks: ## install pre commit.
 validate: ## Validate files with pre-commit hooks
 	@pre-commit run --all-files
 
-build: ## Build docker image
-	@docker build -t test .
+.PHONY: build
+build: ## Build docker image '--progress plain'
+	@docker build -t spring-config .
+
+exec: ## Exec into container
+	@docker run --rm -it spring-config /bin/sh
+
+run: ## Run docker container  -e "SPRING_PROFILES_ACTIVE=dev"
+	@docker run -p 8080:8080 -t spring-config

@@ -1,6 +1,6 @@
 
 #!/bin/sh
 
-java -cp /opt/spring-cloud-config-server ${JAVA_OPTS} ${BOOT_LAUNCHER} \
---server.port=8888 \
+java -jar  ./app.jar ${JAVA_OPTS} ${BOOT_LAUNCHER} \
+--server.port=8080 \
 --spring.config.name=application "$@"

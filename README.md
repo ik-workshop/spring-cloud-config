@@ -41,3 +41,10 @@
 
 [governance.link-checker.badge]: https://github.com/ik-workshop/spring-cloud-config/actions/workflows/governance.links-checker.yml/badge.svg
 [governance.link-checker.status]: https://github.com/ik-workshop/spring-cloud-config/actions/workflows/governance.links-checker.yml
+
+https://www.baeldung.com/spring-cloud-configuration
+https://medium.com/javarevisited/lets-learn-together-sessions-spring-cloud-config-server-17ecd171d86
+
+
+https://github.com/hyness/spring-cloud-config-server
+https://spring.io/guides/gs/centralized-configuration/

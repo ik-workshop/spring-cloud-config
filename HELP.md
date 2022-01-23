@@ -20,6 +20,7 @@ These additional references should also help you:
 ## Resources
 
 - [Example: Full](https://github.com/hyness/spring-cloud-config-server)
+- [Example: Docker oficial](https://spring.io/guides/gs/spring-boot-docker/)
 - [Example: Docker](https://medium.com/@guillaume.borne/how-to-dockerize-a-spring-cloud-config-server-b9f6997ba91)
 - [Example: 1](https://github.com/kousikpaul4u/Spring-cloud-config-server)
 - [Example: 2](https://www.tutorialspoint.com/spring_boot/spring_boot_cloud_configuration_server.htm)
