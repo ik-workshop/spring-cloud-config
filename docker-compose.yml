@@ -5,8 +5,8 @@ version: '3'
 services:
   # Configured through mounted config volume
   config-server:
-    image: spring-config-svc
+    image: spring-config
     ports:
-      - "8882:8888"
+      - "8080:8080"
     volumes:
-      - ./config:/config
+      - ./config:/opt/config

@@ -25,7 +25,6 @@ LABEL org.opencontainers.image.authors="ik <cloudkats@gmail.com>" \
   org.opencontainers.image.documentation="https://github.com/ik-workshop/spring-cloud-config/readme.md" \
   org.opencontainers.image.licenses="https://github.com/ik-workshop/spring-cloud-config/LICENCE"
 
-EXPOSE 8888
-VOLUME /config
+EXPOSE 8080
 
 ENTRYPOINT ["sh", "entrypoint.sh"]

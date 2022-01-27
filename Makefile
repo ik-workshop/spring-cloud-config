@@ -22,7 +22,7 @@ exec: ## Exec into container
 	@docker run --rm -it spring-config /bin/sh
 
 run: ## Run docker container  -e "SPRING_PROFILES_ACTIVE=dev"
-	# docker run -p 8080:8080 -t spring-config -v $(PWD)/config:config
+	# docker run -p 8080:8080 -t spring-config -v $(PWD)/config:/config
 	@docker-compose up
 
 reload: ## Docker compose reload
