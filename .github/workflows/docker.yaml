@@ -52,6 +52,7 @@ jobs:
         env:
           IMAGE_ID: ${{ steps.prep.outputs.image_id }}
           IMAGE: ${{ env.DOCKER_IMAGE }}
+          IMAGE_VERSION: latest
           TAG_VERSION_DATE: ${{ steps.prep.outputs.tag_date }}
           TAG_VERSION_SHA: ${{ steps.prep.outputs.sha }}
           TAG_VERSION: ${{ steps.prep.outputs.version }}
