@@ -17,6 +17,11 @@ A workshop uses [Spring Cloud Config Server](https://docs.spring.io/spring-cloud
 
 ---
 
+[![docker](https://github.com/ik-workshop/spring-cloud-config/actions/workflows/docker.yaml/badge.svg)](https://github.com/ik-workshop/spring-cloud-config/actions/workflows/docker.yaml)
+[![](https://img.shields.io/docker/pulls/cloudkats/spring-cloud-config?color=green&logo=docker&logoColor=#aae5ed&style=flat-square)](https://hub.docker.com/r/cloudkats/spring-cloud-config)
+
+---
+
 - [Spring Cloud Initializer](https://start.spring.io)
 
 ---
