@@ -69,4 +69,4 @@ jobs:
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
           repository: ${{ env.DOCKER_REPO }}/${{ env.DOCKER_IMAGE }}
           readme-filepath: README.md
-          short-description: "Docker image with custom automation toolings"
+          short-description: "Docker image with Sprint Cloud Config"
