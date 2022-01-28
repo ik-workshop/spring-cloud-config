@@ -162,3 +162,5 @@ applications configured with **RefreshScope** to automatically reload configurat
 
 [governance.link-checker.badge]: https://github.com/ik-workshop/spring-cloud-config/actions/workflows/governance.links-checker.yml/badge.svg
 [governance.link-checker.status]: https://github.com/ik-workshop/spring-cloud-config/actions/workflows/governance.links-checker.yml
+
+<!-- https://cloud.spring.io/spring-cloud-config/reference/html/#composite-environment-repositories -->
