@@ -5,7 +5,7 @@ plugins {
 }
 
 group = 'org.workshop'
-sourceCompatibility = '16'
+sourceCompatibility = '17'
 
 repositories {
   mavenCentral()
